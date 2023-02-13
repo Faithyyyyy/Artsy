@@ -1,0 +1,85 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  theme: {
+    extend: {
+      fontFamily: {
+        satoshi: ["satoshi", "sans-serif"],
+        clashDisplay: ["Clash Display", "sans-serif"],
+        STIX: ["STIX Two Text", "sans-serif"],
+        bellefair: ["Bellefair", "serif"],
+        popins: ["Poppins", "sans-serif"],
+        Baskervville: ["Baskervville", "serif"],
+        rubiks: ["Rubik", "sans-serif"],
+        cardo: ["Cardo", "sans-serif"],
+      },
+      screens: {
+        tablet: "940px",
+        mediumScreen: "640px",
+        smallest: "360px",
+        para: "343px",
+        pich: "544px",
+        illustrationP: "509px",
+        large: "1180px",
+        largest: "1300px",
+        smaller: "430px",
+      },
+      colors: {
+        black: "#333",
+        arrowblack: "#616161",
+        arrowBlue: "#4693ED",
+      },
+      maxWidth: {
+        max: "550px",
+        maxl: "540px",
+        maxlh: "900px",
+        medium: "900px",
+        small: "310px",
+        pici: "710px",
+        pici1: "600px",
+        pici2: "1200px",
+      },
+      fontSize: {
+        medium: "26px",
+      },
+      lineHeight: {
+        lineHeight: "1.5",
+        lineHeight1: "2",
+      },
+      borderRadius: {
+        round: "50%",
+        "4xl": "38px",
+      },
+      backgroundColor: {
+        bgred: "#F44336",
+        bgblue: "#006CA2",
+        bgbrown: "#C05609",
+        primary: "var(--primary-color)",
+        lineGray: "#AEAEAE",
+        bgGray: "#E2E2E2",
+      },
+      height: {
+        h1: "232px",
+        h2: "232px",
+        h3: "332px",
+        h4: "428px",
+        h5: "444px",
+        h6: "460px",
+        h7: "250px",
+      },
+      width: {
+        w1: "264px",
+        w2: "358px",
+        // w3: "1000px",
+        w4: "550px",
+      },
+      backgroundImage: {
+        "featured-pic1": "url('./images/featuredPic1.png')",
+        "featured-pic2": "url('./images/featuredPic2.png')",
+        "featured-pic3": "url('./images/featuredPic3.png')",
+        " set-reminder": "url('./images/homeSetReminder.png')",
+      },
+    },
+  },
+  plugins: [],
+};

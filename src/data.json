@@ -1,0 +1,98 @@
+[
+  {
+    "id": 0,
+    "name": "PHILOMENA ‘22",
+    "logo": "/images/product1.png",
+    "image": "/images2/philomena.jpeg",
+    "price": 3.9,
+    "qty": 1
+  },
+  {
+    "id": 1,
+    "name": "BOOLEAN EGYPTIAN",
+    "logo": "/images/product2.png",
+    "image": "/images2/boolean.png",
+    "price": 3.9,
+    "qty": 1
+  },
+  {
+    "id": 2,
+    "name": "BLANC",
+    "logo": "/images/product3.png",
+    "image": "/images2/blanc.jpeg",
+    "price": 3.9,
+    "qty": 1
+  },
+  {
+    "id": 3,
+    "name": "ELLIPSIA",
+    "logo": "/images/product4.png",
+    "image": "/images2/ellipsia.jpeg",
+    "price": 3.9,
+    "qty": 1
+  },
+  {
+    "id": 4,
+    "name": "THE LAWMAKERS ",
+    "logo": "/images/product5.png",
+    "image": "/images2/lawmakers.jpeg",
+    "price": 3.9,
+    "qty": 1
+  },
+  {
+    "id": 5,
+    "name": "VEIL ",
+    "logo": "/images/product6.png",
+    "image": "/images2/viel.jpeg",
+    "price": 3.9,
+    "qty": 1
+  },
+  {
+    "id": 6,
+    "name": "ALTERNATING ",
+    "logo": "/images/product7.png",
+    "image": "/images2/alternating.jpeg",
+    "price": 3.9,
+    "qty": 1
+  },
+  {
+    "id": 7,
+    "name": "ROSEMARY ‘22 ",
+    "logo": "/images/product8.png",
+    "image": "/images2/rosemary.jpeg",
+    "price": 3.9,
+    "qty": 1
+  },
+  {
+    "id": 8,
+    "name": "BEVERLY ",
+    "logo": "/images/product9.png",
+    "image": "/images2/beverly.jpeg",
+    "price": 3.9,
+    "qty": 1
+  },
+  {
+    "id": 9,
+    "name": "SASSY ",
+    "logo": "/images/product8.png",
+    "image": "/images2/rosemary.jpeg",
+    "price": 3.9,
+    "qty": 1
+  },
+  {
+    "id": 10,
+    "name": "ESCAPE'21 ",
+    "logo": "/images/product1.png",
+    "image": "/images2/philomena.jpeg",
+    "price": 3.9,
+    "qty": 1
+  },
+  {
+    "id": 11,
+    "name": "WRAPPED'23 ",
+    "logo": "/images/product2.png",
+    "image": "/images2/boolean.png",
+    "price": 3.9,
+    "qty": 1
+  }
+]
