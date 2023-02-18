@@ -2,19 +2,14 @@ import exit from "./../images/exit.png";
 
 import { Link } from "react-router-dom";
 
-function SingleCart({
-  cart,
-  cartItemNo,
-  handlecartItemNo,
-  SetCart,
-  handleIncrement,
-  handleDecrement,
-}) {
+function SingleCart({ cart, SetCart, handleIncrement, handleDecrement }) {
   const removeCartItem = (id) => {
     const filterCart = cart.filter((item) => item.id !== id);
     SetCart(filterCart);
   };
-  let totalPrice = parseFloat("10.547892").toFixed(2);
+
+  let Shipping = 40;
+  let totalPrice = 0 + Shipping;
   return (
     <div className="px-5 large:pl-0 max-w-6xl mx-auto ">
       <div className="my-10 ">
@@ -81,7 +76,7 @@ function SingleCart({
                   </span>
                 </p>
                 <p className="text-black font-cardo text-xl md:text-2xl">
-                  ${Math.trunc(item.price)}
+                  ${item.price * item.qty}
                 </p>
               </div>
             </div>
@@ -96,7 +91,7 @@ function SingleCart({
           </div>
           <div className="flex justify-between text-xl font-satoshi">
             <p className="text-[#888888] ">Shipping : </p>
-            <p>$80.69</p>
+            <p>${Shipping}</p>
           </div>
           <div className="flex justify-between text-xl font-satoshi">
             <p className="text-[#888888] ">Total : </p>

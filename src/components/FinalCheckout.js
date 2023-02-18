@@ -1,6 +1,5 @@
 import { AiFillLock } from "react-icons/ai";
 import { BsPlusLg } from "react-icons/bs";
-import { Link } from "react-router-dom";
 import metamask from "./../images/MetaMask - jpeg.png";
 import coinbase from "./../images/Coinbase - png.png";
 import walletConnect from "./../images/WalletConnect - jpeg.png";
@@ -10,13 +9,45 @@ import coinbase2 from "./../images/coinbase2.png";
 import walletConnect2 from "./../images/walletconnect2.png";
 import Phantom2 from "./../images/phantom2.png";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
+// ^[a-zA-Z0-9]*$
 function FinalCheckout({ cart, cartItemNo, handlecartItemNo, SetCart }) {
+  const navigate = useNavigate();
+  const initialKey = {
+    lockKey: "",
+  };
   const [key, setKey] = useState("");
+  const [select, setSelect] = useState("");
+  const [errors, setError] = useState({});
+  const [isSubmit, setisSubmit] = useState(false);
+  const [keyValues, setKeyValues] = useState({ initialKey });
+
   const handleKey = (e) => {
     e.preventDefault();
-    const value = e.target.value;
-    setKey(value);
+    const vals = e.target.value;
+    setKey(vals);
+    const { name, value } = e.target;
+    setKeyValues({ ...keyValues, [name]: value });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setError(validate(keyValues));
+    setisSubmit(true);
+    if (Object.keys(errors).length === 0 && isSubmit) {
+      navigate("/sucesspage");
+    }
+  };
+
+  const validate = (values) => {
+    const error = {};
+    const regex = /^[a-zA-Z0-9]*$/i;
+    if (values.lockKey) {
+      error.lockKey = " A Key is Required**";
+    } else if (!regex.test(values.lockKey)) {
+      errors.fullName = "Invalid key";
+    }
+    return error;
   };
   return (
     <div className=" px-5 large:px-0 large:pl-0 max-w-6xl mx-auto">
@@ -100,7 +131,7 @@ function FinalCheckout({ cart, cartItemNo, handlecartItemNo, SetCart }) {
                 Connect with one of our available wallet providers or add and
                 connect a new wallet.{" "}
               </p>
-              <form className="">
+              <form onSubmit={handleSubmit}>
                 <div>
                   <label
                     htmlFor="wallet"
@@ -114,12 +145,15 @@ function FinalCheckout({ cart, cartItemNo, handlecartItemNo, SetCart }) {
                     name="wallet"
                     id="wallet"
                     className="w-full bg-[#F2F2F2] h-[50px] font-satoshi rounded  border border-[#747474] pl-4"
+                    required
+                    onChange={(e) => setSelect(e.target.value)}
+                    value={select}
                   >
                     <option></option>
                     <option>Metamask</option>
                     <option>Coinbase</option>
-                    <option>Trust Wallet</option>
-                    <option>Phantom wallet</option>
+                    <option>Trust</option>
+                    <option>Phantom</option>
                   </select>
                 </div>
                 <br></br>
@@ -130,10 +164,11 @@ function FinalCheckout({ cart, cartItemNo, handlecartItemNo, SetCart }) {
                   <br></br>
                   <br></br>
                   <input
-                    id="name"
+                    name="name"
                     type="text"
                     className="w-full bg-[#F2F2F2] h-[50px] font-satoshi rounded  border border-[#747474] pl-4 "
                     placeholder="Please Enter your Key"
+                    value={keyValues.lockKey}
                     onChange={(e) => {
                       handleKey(e);
                     }}
@@ -144,6 +179,7 @@ function FinalCheckout({ cart, cartItemNo, handlecartItemNo, SetCart }) {
                     className="w-9 h-9 absolute top-14 right-2"
                   />
                 </div>
+                <p className="text-red-500">{errors.lockKey}</p>
                 <br></br>
                 <div>
                   <input
@@ -161,13 +197,19 @@ function FinalCheckout({ cart, cartItemNo, handlecartItemNo, SetCart }) {
                   <br></br>
                   <br></br>
                 </div>
+                <button
+                  type="submit"
+                  className=" w-full max-w-[668px] mx-auto bg-[#3341C1] h-[57px] rounded-sm text-white font-satoshi flex items-center justify-center mt-9  text-lg md:text-xl"
+                >
+                  Confirm
+                </button>
               </form>
-              <div
-                // to="/sucesspage"
+              {/* <button
+                type="submit"
                 className=" w-full max-w-[668px] mx-auto bg-[#3341C1] h-[57px] rounded-sm text-white font-satoshi flex items-center justify-center mt-9  text-lg md:text-xl"
               >
-                <button type="submit">Confirm</button>
-              </div>
+                Confirm
+              </button> */}
             </div>
           </>
           <>
@@ -176,7 +218,7 @@ function FinalCheckout({ cart, cartItemNo, handlecartItemNo, SetCart }) {
                 Payment Summary
               </h6>
               <p className="font-satoshi text-lg mb-5 mt-10">
-                Metamask wallet : <span>{key}</span>
+                {select} wallet : <span>{key}</span>
               </p>
               <p className="font-satoshi text-lg text-[#616161] mt-5  pb-7 border-b border-[#d4d1d1]">
                 Actively linked to Yaba, Lagos Nigeria.

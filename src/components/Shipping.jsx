@@ -44,7 +44,7 @@ function Shipping({ cart, cartItemNo, handlecartItemNo, SetCart, handleName }) {
                   {" "}
                   <span className="text-[#616161]">Size </span>200ft
                 </p>
-                <div className="flex justify-between">
+                {/* <div className="flex justify-between">
                   <p className="border border-black md:border-0 flex justify-between items-center px-2 rounded-lg font-satoshi text-xl md:text-2xl">
                     <span className="pr-2 md:pr-0 cursor-pointer">-</span>
                     <span className="border-x border-black  md:border-0 px-4 md:text-xl">
@@ -62,7 +62,7 @@ function Shipping({ cart, cartItemNo, handlecartItemNo, SetCart, handleName }) {
                   <p className="text-black font-cardo text-xl md:text-2xl">
                     ${item.price}
                   </p>
-                </div>
+                </div> */}
               </div>
             </div>
           );

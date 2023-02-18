@@ -5,7 +5,9 @@
     "logo": "/images/product1.png",
     "image": "/images2/philomena.jpeg",
     "price": 3.9,
-    "qty": 1
+    "shipping": 20,
+    "qty": 1,
+    "category": "editorials"
   },
   {
     "id": 1,
@@ -13,7 +15,9 @@
     "logo": "/images/product2.png",
     "image": "/images2/boolean.png",
     "price": 3.9,
-    "qty": 1
+    "shipping": 40,
+    "qty": 1,
+    "category": "editorials"
   },
   {
     "id": 2,
@@ -21,7 +25,9 @@
     "logo": "/images/product3.png",
     "image": "/images2/blanc.jpeg",
     "price": 3.9,
-    "qty": 1
+    "shipping": 50,
+    "qty": 1,
+    "category": "nature"
   },
   {
     "id": 3,
@@ -29,7 +35,9 @@
     "logo": "/images/product4.png",
     "image": "/images2/ellipsia.jpeg",
     "price": 3.9,
-    "qty": 1
+    "shipping": 10,
+    "qty": 1,
+    "category": "art & museum"
   },
   {
     "id": 4,
@@ -37,7 +45,9 @@
     "logo": "/images/product5.png",
     "image": "/images2/lawmakers.jpeg",
     "price": 3.9,
-    "qty": 1
+    "shipping": 20,
+    "qty": 1,
+    "category": "fashion"
   },
   {
     "id": 5,
@@ -45,7 +55,9 @@
     "logo": "/images/product6.png",
     "image": "/images2/viel.jpeg",
     "price": 3.9,
-    "qty": 1
+    "shipping": 80,
+    "qty": 1,
+    "category": "optics"
   },
   {
     "id": 6,
@@ -53,7 +65,9 @@
     "logo": "/images/product7.png",
     "image": "/images2/alternating.jpeg",
     "price": 3.9,
-    "qty": 1
+    "shipping": 80,
+    "qty": 1,
+    "category": "art & museum"
   },
   {
     "id": 7,
@@ -61,7 +75,9 @@
     "logo": "/images/product8.png",
     "image": "/images2/rosemary.jpeg",
     "price": 3.9,
-    "qty": 1
+    "shipping": 40,
+    "qty": 1,
+    "category": "art & museum"
   },
   {
     "id": 8,
@@ -69,7 +85,9 @@
     "logo": "/images/product9.png",
     "image": "/images2/beverly.jpeg",
     "price": 3.9,
-    "qty": 1
+    "shipping": 10,
+    "qty": 1,
+    "category": "optics"
   },
   {
     "id": 9,
@@ -77,7 +95,9 @@
     "logo": "/images/product8.png",
     "image": "/images2/rosemary.jpeg",
     "price": 3.9,
-    "qty": 1
+    "shipping": 30,
+    "qty": 1,
+    "category": "nature"
   },
   {
     "id": 10,
@@ -85,7 +105,9 @@
     "logo": "/images/product1.png",
     "image": "/images2/philomena.jpeg",
     "price": 3.9,
-    "qty": 1
+    "shipping": 70,
+    "qty": 1,
+    "category": "optics"
   },
   {
     "id": 11,
@@ -93,6 +115,8 @@
     "logo": "/images/product2.png",
     "image": "/images2/boolean.png",
     "price": 3.9,
-    "qty": 1
+    "shipping": 70,
+    "qty": 1,
+    "category": "editorials"
   }
 ]

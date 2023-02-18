@@ -1,15 +1,70 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 function ShippingForm({ handleName }) {
   const [email, setEmail] = useState("");
   const [hide, setHide] = useState("hidden");
+  const navigate = useNavigate();
   const handlevalidation = (e) => {
     e.preventDefault();
     const value = e.target.value;
     setEmail(value);
-    console.log(email.length);
   };
+  const initialValues = {
+    email: "",
+    fullName: "",
+    postalCode: "",
+    phoneNumber: "",
+  };
+  const [formValues, setFormValues] = useState({ initialValues });
+  const [formErrors, setErrors] = useState({});
+  const [isSubmit, setIsSubmit] = useState(false);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value });
+    console.log(formValues);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
+    setErrors(validate(formValues));
+    setIsSubmit(true);
+  };
+  useEffect(() => {
+    console.log(formErrors);
+    if (Object.keys(formErrors).length === 0 && isSubmit) {
+      navigate("/finalCheckout");
+    }
+  }, [formErrors]);
+  const validate = (values) => {
+    const errors = {};
+    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    const regexName = /^[A-Z][-a-zA-Z]+$/i;
+    if (!values.fullName) {
+      errors.fullName = "Please enter your full name";
+    } else if (!regexName.test(values.fullName)) {
+      errors.fullName = "Enter a valid name";
+    }
+    if (!values.email) {
+      errors.email = "Please enter your Email";
+    } else if (!regexEmail.test(values.email)) {
+      errors.email = "Enter a valid email";
+    }
+    if (!values.postalCode) {
+      errors.postalCode = "Required**";
+    } else if (values.postalCode.length < 5) {
+      errors.postalCode = "Must be 5 digits";
+    }
+    if (!values.phoneNumber) {
+      errors.phoneNumber = "Please enter your phone Number";
+    } else if (values.phoneNumber.length < 11) {
+      errors.phoneNumber = "Must be 11 digits";
+    }
+    return errors;
+  };
+  const handleRender = () => {
+    return isSubmit;
+  };
   return (
     <div className="px-5 mb-24  max-w-[590px] mx-auto">
       <div className="my-10 large:hidden">
@@ -19,7 +74,7 @@ function ShippingForm({ handleName }) {
           <span className="text-black">Shipping</span>
         </p>
       </div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="email" className="text-[#888888] font-satoshi">
             Your Email
@@ -28,12 +83,14 @@ function ShippingForm({ handleName }) {
           <br></br>
           <input
             type="email"
-            id="email"
-            required
+            name="email"
+            value={formValues.email}
+            // required
             className="w-full bg-[#F2F2F2] h-[50px] rounded font-satoshi  border border-[#747474] pl-4 :required:border-red-400"
-            onChange={(e) => handlevalidation(e)}
+            onChange={handleChange}
           />
         </div>
+        <p className="text-red-500 mt-2">{formErrors.email}</p>
         <br></br>
         <div>
           <input
@@ -51,36 +108,21 @@ function ShippingForm({ handleName }) {
 
         <div>
           <label htmlFor="name" className="text-[#888888] font-satoshi">
-            Your full name
+            Your First name
           </label>
           <br></br>
           <br></br>
           <input
-            id="name"
-            type="email"
+            name="fullName"
+            type="text"
+            value={formValues.fullName}
             className="w-full bg-[#F2F2F2] h-[50px] font-satoshi rounded  border border-[#747474] pl-4 required"
-            onChange={(e) => handleName(e)}
+            onChange={handleChange}
+            onClick={(e) => handleName(e)}
           />
         </div>
+        <p className="text-red-500 mt-2">{formErrors.fullName}</p>
         <br></br>
-        <div>
-          <label htmlFor="wallet" className="text-[#888888] font-satoshi">
-            Choose a wallet
-          </label>
-          <br></br>
-          <br></br>
-          <select
-            name="wallet"
-            id="wallet"
-            className="w-full bg-[#F2F2F2] h-[50px] font-satoshi rounded  border border-[#747474] pl-4"
-          >
-            <option></option>
-            <option>Metamask</option>
-            <option>Coinbase</option>
-            <option>Trust Wallet</option>
-            <option>Phantom wallet</option>
-          </select>
-        </div>
         <br></br>
         <div className="flex flex-col md:flex-row md:gap-5">
           <div>
@@ -89,7 +131,10 @@ function ShippingForm({ handleName }) {
             </label>
             <br></br>
             <br></br>
-            <select className=" w-full bg-[#F2F2F2] h-[50px] rounded border border-[#747474] font-satoshi pl-4">
+            <select
+              className=" w-full bg-[#F2F2F2] h-[50px] rounded border border-[#747474] font-satoshi pl-4"
+              required
+            >
               <option></option>
               <option value="Afghanistan">Afghanistan</option>
               <option value="Albania">Albania</option>
@@ -384,10 +429,14 @@ function ShippingForm({ handleName }) {
             <br></br>
             <br></br>
             <input
-              type="text"
+              type="number"
+              name="postalCode"
+              value={formValues.postalCode}
               className=" w-full bg-[#F2F2F2] h-[50px] rounded  border border-gray-500  font-satoshi pl-4"
               placeholder="0010001"
+              onChange={handleChange}
             />
+            <p className="text-red-500 mt-2">{formErrors.postalCode}</p>
           </div>
         </div>
         <br></br>
@@ -398,22 +447,33 @@ function ShippingForm({ handleName }) {
           <br></br>
           <br></br>
           <input
-            type="text"
+            type="number"
+            value={formValues.phoneNumber}
+            name="phoneNumber"
+            onChange={handleChange}
             className="w-full bg-[#F2F2F2 ] font-satoshi h-[50px] rounded  border border-gray-500 pl-4"
           />
+          <p className="text-red-500 mt-2">{formErrors.phoneNumber}</p>
         </div>
+
         <br></br>
         <br></br>
         <p className={`font-satoshi text-xl text-red-500 ${hide}`}>
           Please fill all input field**
         </p>
         <br></br>
-        <Link
-          to="/finalCheckout"
-          className=" w-full bg-[#3341C1] h-[57px] rounded-sm text-white font-satoshi flex items-center justify-center  text-lg md:text-xl"
+        {/* <Link */}
+        {/* to="/finalCheckout"
+          className=" w-full bg-[#3341C1] h-[57px] rounded-sm text-white font-satoshi flex items-center justify-center  text-lg md:text-xl" */}
+        {/* > */}
+        <button
+          type="submit"
+          onClick={handleRender}
+          className="w-full bg-[#3341C1] h-[57px] rounded-sm text-white font-satoshi flex items-center justify-center  text-lg md:text-xl"
         >
-          <button type="submit">Proceed to Payment</button>
-        </Link>
+          Proceed to Payment
+        </button>
+        {/* </Link> */}
       </form>
     </div>
   );

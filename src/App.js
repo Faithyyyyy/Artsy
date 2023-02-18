@@ -19,7 +19,6 @@ function App() {
   const [cart, SetCart] = useState([]);
   const [yourName, setYourName] = useState("");
   const [notify, setNotify] = useState("hidden");
-  // const [cartItemNo, setCartItemNo] = useState(1);
 
   const handleAddToCart = (item) => {
     if (!cart.includes(item)) {
@@ -27,8 +26,8 @@ function App() {
     }
     if (cart.length >= 0) {
       setNotify("block");
-    } else {
-      return setNotify("hidden");
+    } else if (cart.length === 0) {
+      setNotify("hidden");
     }
   };
   const handleIncrement = (card_id) => {
@@ -38,7 +37,6 @@ function App() {
           ? {
               ...item,
               qty: item.qty + (item.qty < 10 ? 1 : 0),
-              price: item.price + item.qty,
             }
           : item
       )
@@ -51,7 +49,6 @@ function App() {
           ? {
               ...item,
               qty: item.qty - (item.qty > 1 ? 1 : 0),
-              price: item.price - item.qty,
             }
           : item
       )
@@ -96,10 +93,7 @@ function App() {
           element={
             <Shipping
               cart={cart}
-              // cartItemNo={cartItemNo}
-              // setCartItemNo={setCartItemNo}
               setCart={SetCart}
-              // handlecartItemNo={handlecartItemNo}
               SetCart={SetCart}
               handleName={handleName}
             />
@@ -109,14 +103,7 @@ function App() {
         <Route
           path="finalCheckout"
           element={
-            <FinalCheckout
-              cart={cart}
-              // cartItemNo={cartItemNo}
-              // setCartItemNo={setCartItemNo}
-              setCart={SetCart}
-              // handlecartItemNo={handlecartItemNo}
-              SetCart={SetCart}
-            />
+            <FinalCheckout cart={cart} setCart={SetCart} SetCart={SetCart} />
           }
         ></Route>
         <Route path="drop" element={<Drop />}></Route>
@@ -125,8 +112,6 @@ function App() {
           element={
             <Cart
               cart={cart}
-              // cartItemNo={cartItemNo}
-              // setCartItemNo={setCartItemNo}
               setCart={SetCart}
               // handlecartItemNo={handlecartItemNo}
               SetCart={SetCart}
