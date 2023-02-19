@@ -26,7 +26,7 @@ function HeroAnimation() {
           </div>
         </div>
       </div>
-      <div className="scrollbar-hide hidden sm:flex overflow-x-auto  gap-5 mt-20 h-h6 mb-16">
+      <div className="scrollbar-hide hidden sm:flex overflow-x-auto  gap-5 mt-20 h-h6 mb-16 max-w-6xl mx-auto">
         <img
           src={img1}
           alt="First slide pic"

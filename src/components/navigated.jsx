@@ -104,33 +104,6 @@ function Navigated({
           </div>
           <div className="">
             <div className="py-8 border-y border-black font-satoshi">
-              {/* {items.map((item) => {
-                return (
-                  <div key={item.id}>
-                    <div className="flex justify-between items-center">
-                      <p className="text-xl lg:text-3xl lg:pl-8" id="1">
-                        {item.title}
-                      </p>
-                      <img
-                        src={dropdown}
-                        alt=""
-                        className="w-4 h-2.5 mr-8 cursor-pointer"
-                        onClick={() => {handleDropdown();}}
-                      />
-                    </div>
-                    {closeDropdown && (
-                      <p className="mt-5 lg:px-8">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Asperiores reprehenderit optio dignissimos incidunt
-                        rerum veniam officiis quisquam, quidem non eius at
-                        architecto tenetur sit similique repellendus provident,
-                        maiores nam. Placeat?
-                      </p>
-                    )}
-                  </div>
-                );
-              })} */}
-
               <div className="flex justify-between items-center">
                 <p className="text-xl lg:text-3xl lg:pl-8" id="1">
                   {" "}
@@ -143,16 +116,6 @@ function Navigated({
                   onClick={handleDropdown}
                 />
               </div>
-
-              {closeDropdown && (
-                <p className="mt-5 lg:px-8">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Asperiores reprehenderit optio dignissimos incidunt rerum
-                  veniam officiis quisquam, quidem non eius at architecto
-                  tenetur sit similique repellendus provident, maiores nam.
-                  Placeat?
-                </p>
-              )}
             </div>
             <div className="py-8 font-satoshi border-b border-black">
               <div className="flex justify-between items-center">
@@ -172,15 +135,6 @@ function Navigated({
               </div>
 
               {activeItem === id}
-              {closeDropdown && (
-                <p className="mt-5 lg:px-8">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Asperiores reprehenderit optio dignissimos incidunt rerum
-                  veniam officiis quisquam, quidem non eius at architecto
-                  tenetur sit similique repellendus provident, maiores nam.
-                  Placeat?
-                </p>
-              )}
             </div>
             <div className="py-8  font-satoshi ">
               <div className="flex justify-between items-center">
@@ -194,15 +148,6 @@ function Navigated({
                   onClick={handleDropdown}
                 />
               </div>
-              {closeDropdown && (
-                <p className="mt-5 lg:px-8 mr-5">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Asperiores reprehenderit optio dignissimos incidunt rerum
-                  veniam officiis quisquam, quidem non eius at architecto
-                  tenetur sit similique repellendus provident, maiores nam.
-                  Placeat?
-                </p>
-              )}
             </div>
           </div>
         </div>

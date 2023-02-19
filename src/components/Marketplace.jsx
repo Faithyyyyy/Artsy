@@ -16,7 +16,6 @@ function MarketPlace({ product, handleAddToCart }) {
   const title = ["By Category", "By Price", "By Artist"];
   const handleDrop = (index) => {
     title.forEach((item, id) => {
-      console.log(id);
       if (index === id) {
         return setOpendrop(!openDrop);
       }
@@ -121,14 +120,14 @@ function MarketPlace({ product, handleAddToCart }) {
             onClick={() => handleDrop(0)}
           />
         </div>
-        {!openDrop && (
+        {
           <form className={`mt-6 `} id="1">
             <label
               htmlFor="vehicle1"
               className="font-satoshi text-2xl "
               onClick={() => handleFilters("editorials")}
             >
-              <input type="checkbox" className="mr-3" onChange={handleClick} />
+              {/* <input type="checkbox" className="mr-3" onChange={handleClick} /> */}
               Editorials
             </label>
             <br /> <br />
@@ -136,7 +135,7 @@ function MarketPlace({ product, handleAddToCart }) {
               className="font-satoshi text-2xl "
               onClick={() => handleFilters("fashion")}
             >
-              <input type="checkbox" className="mr-3" onChange={handleClick} />
+              {/* <input type="checkbox" className="mr-3" onChange={handleClick} /> */}
               Fashion
             </label>
             <br /> <br />
@@ -145,7 +144,7 @@ function MarketPlace({ product, handleAddToCart }) {
               className="font-satoshi text-2xl "
               onClick={() => handleFilters("optics")}
             >
-              <input type="checkbox" className="mr-3" onChange={handleClick} />
+              {/* <input type="checkbox" className="mr-3" onChange={handleClick} /> */}
               Optics
             </label>
             <br /> <br />
@@ -154,7 +153,7 @@ function MarketPlace({ product, handleAddToCart }) {
               className="font-satoshi text-2xl "
               onClick={() => handleFilters("art & museum")}
             >
-              <input type="checkbox" className="mr-3" onChange={handleClick} />
+              {/* <input type="checkbox" className="mr-3" onChange={handleClick} /> */}
               Art & Museum
             </label>
             <br /> <br />
@@ -163,12 +162,12 @@ function MarketPlace({ product, handleAddToCart }) {
               className="font-satoshi text-2xl "
               onClick={() => handleFilters("nature")}
             >
-              <input type="checkbox" className="mr-3" onChange={handleClick} />
+              {/* <input type="checkbox" className="mr-3" onChange={handleClick} /> */}
               Nature
             </label>
             <br /> <br />
           </form>
-        )}
+        }
         <div className="flex items-center justify-between mt-10">
           <p className="font-satoshi text-xl font-medium">{title[1]}</p>
           <img
@@ -180,12 +179,12 @@ function MarketPlace({ product, handleAddToCart }) {
             }}
           />
         </div>
-        {!openDrop && (
+        {
           <div className={``} id="2">
             <p className=" font-satoshi text-xl my-8">$100.00 - $150.00</p>
             <Slider />
           </div>
-        )}
+        }
         <div className={`flex items-center justify-between mt-10 `}>
           <p className="font-satoshi text-xl font-medium">{title[2]}</p>
           <img
@@ -196,6 +195,7 @@ function MarketPlace({ product, handleAddToCart }) {
           />
         </div>
         <ByArtist drop={drop} id={3} />
+        <br></br>
       </div>
       <div className="flex-grow ">
         <div className="hidden lg:flex justify-between bg-white shadow px-8 py-4 rounded-lg w-  mx-auto">

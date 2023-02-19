@@ -11,8 +11,7 @@ import Phantom2 from "./../images/phantom2.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-// ^[a-zA-Z0-9]*$
-function FinalCheckout({ cart, cartItemNo, handlecartItemNo, SetCart }) {
+function FinalCheckout({ cart, shipping, totalPrice }) {
   const navigate = useNavigate();
   const initialKey = {
     lockKey: "",
@@ -204,12 +203,6 @@ function FinalCheckout({ cart, cartItemNo, handlecartItemNo, SetCart }) {
                   Confirm
                 </button>
               </form>
-              {/* <button
-                type="submit"
-                className=" w-full max-w-[668px] mx-auto bg-[#3341C1] h-[57px] rounded-sm text-white font-satoshi flex items-center justify-center mt-9  text-lg md:text-xl"
-              >
-                Confirm
-              </button> */}
             </div>
           </>
           <>
@@ -227,6 +220,7 @@ function FinalCheckout({ cart, cartItemNo, handlecartItemNo, SetCart }) {
                 Expected arrival date:{" "}
                 <span>Between 22nd Febuary and 26th March 2023</span>
               </p>
+
               <div className="grid gap-6 md:order-2 w-full mt-9">
                 <div className="flex justify-between text-xl font-satoshi">
                   <p className="text-[#888888] ">Products in cart : </p>
@@ -234,11 +228,11 @@ function FinalCheckout({ cart, cartItemNo, handlecartItemNo, SetCart }) {
                 </div>
                 <div className="flex justify-between text-xl font-satoshi">
                   <p className="text-[#888888] ">Shipping : </p>
-                  <p>$80.69</p>
+                  <p>${shipping}</p>
                 </div>
                 <div className="flex justify-between text-xl font-satoshi">
                   <p className="text-[#888888] ">Total : </p>
-                  <p>3 items</p>
+                  <p>{totalPrice}</p>
                 </div>
               </div>
             </div>

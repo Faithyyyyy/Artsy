@@ -3,11 +3,12 @@ import SingleCart from "./Singlecart";
 
 function Cart({
   cart,
-  cartItemNo,
-  handlecartItemNo,
+
   SetCart,
   handleIncrement,
   handleDecrement,
+  shipping,
+  totalPrice,
 }) {
   if (cart.length === 0) {
     return <EmptyCart />;
@@ -15,8 +16,8 @@ function Cart({
     return (
       <SingleCart
         cart={cart}
-        // cartItemNo={cartItemNo}
-        // handlecartItemNo={handlecartItemNo}
+        shipping={shipping}
+        totalPrice={totalPrice}
         SetCart={SetCart}
         handleDecrement={handleDecrement}
         handleIncrement={handleIncrement}

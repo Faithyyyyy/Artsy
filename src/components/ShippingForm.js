@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-function ShippingForm({ handleName }) {
+function ShippingForm({ handleName, state }) {
   const [email, setEmail] = useState("");
   const [hide, setHide] = useState("hidden");
   const navigate = useNavigate();
@@ -22,7 +22,6 @@ function ShippingForm({ handleName }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
-    console.log(formValues);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,7 +30,6 @@ function ShippingForm({ handleName }) {
     setIsSubmit(true);
   };
   useEffect(() => {
-    console.log(formErrors);
     if (Object.keys(formErrors).length === 0 && isSubmit) {
       navigate("/finalCheckout");
     }
@@ -41,7 +39,7 @@ function ShippingForm({ handleName }) {
     const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
     const regexName = /^[A-Z][-a-zA-Z]+$/i;
     if (!values.fullName) {
-      errors.fullName = "Please enter your full name";
+      errors.fullName = "Please your first name";
     } else if (!regexName.test(values.fullName)) {
       errors.fullName = "Enter a valid name";
     }

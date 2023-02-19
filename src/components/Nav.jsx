@@ -7,7 +7,7 @@ import { BiSearch } from "react-icons/bi";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 // import Cart from "./cart";
-function Nav({ notify, setNotify }) {
+function Nav({ notify, setNotify, cart }) {
   const [openNav, setOpenNav] = useState("hidden");
 
   const [showCart, setsetShowCart] = useState(false);
@@ -74,7 +74,9 @@ function Nav({ notify, setNotify }) {
                 onClick={handleCartVisibility}
               />
               <div
-                className={`w-2 h-2 bg-red-600 rounded-round relative -top-7 -right-5 ${notify}`}
+                className={`w-2 h-2 bg-red-600 rounded-round relative -top-7 -right-5  ${
+                  cart.length > 0 ? "block" : "hidden"
+                }`}
               ></div>
             </NavLink>
             <NavLink to="drop">

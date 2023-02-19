@@ -24,12 +24,9 @@ function App() {
     if (!cart.includes(item)) {
       SetCart((prev) => [...prev, item]);
     }
-    if (cart.length >= 0) {
-      setNotify("block");
-    } else if (cart.length === 0) {
-      setNotify("hidden");
-    }
   };
+  let shipping = 40;
+  let totalPrice = 0 + shipping;
   const handleIncrement = (card_id) => {
     SetCart((cart) =>
       cart.map((item) =>
@@ -62,7 +59,7 @@ function App() {
 
   return (
     <div className=" ">
-      <Nav notify={notify} setNotify={setNotify} />
+      <Nav notify={notify} setNotify={setNotify} cart={cart} />
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route
@@ -96,6 +93,10 @@ function App() {
               setCart={SetCart}
               SetCart={SetCart}
               handleName={handleName}
+              shipping={shipping}
+              totalPrice={totalPrice}
+              handleDecrement={handleDecrement}
+              handleIncrement={handleIncrement}
             />
           }
         ></Route>
@@ -103,7 +104,13 @@ function App() {
         <Route
           path="finalCheckout"
           element={
-            <FinalCheckout cart={cart} setCart={SetCart} SetCart={SetCart} />
+            <FinalCheckout
+              cart={cart}
+              setCart={SetCart}
+              SetCart={SetCart}
+              shipping={shipping}
+              totalPrice={totalPrice}
+            />
           }
         ></Route>
         <Route path="drop" element={<Drop />}></Route>
@@ -113,13 +120,15 @@ function App() {
             <Cart
               cart={cart}
               setCart={SetCart}
-              // handlecartItemNo={handlecartItemNo}
+              shipping={shipping}
+              totalPrice={totalPrice}
               SetCart={SetCart}
               handleDecrement={handleDecrement}
               handleIncrement={handleIncrement}
             />
           }
         ></Route>
+
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </div>
